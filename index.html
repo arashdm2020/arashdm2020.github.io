@@ -1,10 +1,409 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Arash Dolati Mehr</title>
-  </head>
-  <body>
-    <h1>Hello 👋</h1>
-    <p>This is my GitHub Pages site.</p>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Arash Dolati Mehr — Senior Backend & Web3 Engineer. Go, Solidity, distributed systems, production-grade smart contracts." />
+  <title>Arash Dolati Mehr — Senior Backend & Web3 Engineer</title>
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1620;
+      --panel2:#0c121a;
+      --text:#e8eef7;
+      --muted:#a9b4c2;
+      --line:rgba(255,255,255,.08);
+      --accent:#7c5cff;
+      --accent2:#2ee59d;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 80% 10%, rgba(46,229,157,.12), transparent 55%),
+        radial-gradient(900px 600px at 60% 110%, rgba(124,92,255,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 64px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 16px;
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.6);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      position: sticky; top: 14px; z-index: 10;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
+    }
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{
+      font-size:14px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    .navlinks a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
+    .hero{
+      display:grid; grid-template-columns: 1.25fr .75fr;
+      gap:18px; margin-top:18px;
+    }
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      .nav{border-radius: 20px}
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15,22,32,.75), rgba(12,18,26,.75));
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{padding:26px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 11px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .kicker b{color:var(--text)}
+    h1{
+      margin:14px 0 10px;
+      font-size:42px;
+      line-height:1.1;
+      letter-spacing:-.8px;
+    }
+    @media (max-width: 520px){
+      h1{font-size:34px}
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:16px;
+      max-width: 68ch;
+    }
+    .ctaRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+    }
+    .btnPrimary{
+      border-color: rgba(124,92,255,.35);
+      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(46,229,157,.10));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .small{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .heroSide{padding:18px}
+    .stats{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .stat{
+      padding:12px 12px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:rgba(255,255,255,.03);
+    }
+    .stat .n{font-weight:800; font-size:18px}
+    .stat .l{color:var(--muted); font-size:12px; margin-top:3px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .section{
+      margin-top:18px;
+      padding:22px;
+    }
+    .section h2{
+      margin:0 0 12px;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 880px){
+      .grid{grid-template-columns:1fr}
+    }
+    .box{
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background:rgba(255,255,255,.03);
+    }
+    .box h3{margin:0 0 8px; font-size:15px}
+    .box p{margin:0; color:var(--muted); font-size:14px}
+    .list{margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); font-size:14px}
+    .list li{margin:6px 0}
+    .footer{
+      margin-top:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .links a{
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+    }
+    .links a:hover{color:var(--text)}
+    code.inline{
+      background: rgba(124,92,255,.18);
+      border: 1px solid rgba(124,92,255,.25);
+      padding: 1px 7px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Arash Dolati Mehr</span>
+      </div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#focus">Focus</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card heroMain">
+        <div class="kicker">⚙️ <b>Senior Backend & Web3 Engineer</b> • Go / Solidity • Distributed Systems</div>
+        <h1>Production-grade backends and smart contracts that survive mainnet.</h1>
+        <div class="subtitle">
+          I build scalable, secure backend systems and EVM smart contracts for NFT, DeFi, and protocol-level products —
+          with a focus on reliability, maintainability, and real-world operating constraints.
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="#contact">📩 Contact</a>
+          <a class="btn" href="https://github.com/arashdm2020" target="_blank" rel="noreferrer">🐙 GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/arashdolatimehr/" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+        </div>
+
+        <div class="small">
+          Currently open to: <code class="inline">remote contracts</code> • <code class="inline">protocol/backend consulting</code> • <code class="inline">security-minded engineering</code>
+        </div>
+      </div>
+
+      <div class="card heroSide">
+        <div class="stats">
+          <div class="stat">
+            <div class="n">15+ yrs</div>
+            <div class="l">Backend / systems engineering</div>
+          </div>
+          <div class="stat">
+            <div class="n">7+ yrs</div>
+            <div class="l">Blockchain & EVM work</div>
+          </div>
+          <div class="stat">
+            <div class="n">12k+</div>
+            <div class="l">Users on NFT game (prod)</div>
+          </div>
+          <div class="stat">
+            <div class="n">99.9%</div>
+            <div class="l">Uptime ops experience</div>
+          </div>
+        </div>
+
+        <div class="chips" aria-label="Key skills">
+          <span class="chip">Go (Gin, GORM)</span>
+          <span class="chip">Solidity (EVM)</span>
+          <span class="chip">Rust</span>
+          <span class="chip">Python (FastAPI)</span>
+          <span class="chip">PHP (Laravel)</span>
+          <span class="chip">PostgreSQL / Redis</span>
+          <span class="chip">Docker / Kubernetes</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip">Security-first</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="card section">
+      <h2>About</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>How I work</h3>
+          <p>
+            I prefer boring, testable designs: clear invariants, minimal state, explicit failure modes,
+            and observability from day one. Most “scalable” systems fail due to unclear ownership of state,
+            weak operational discipline, or unsafe upgrade paths — I design around that.
+          </p>
+        </div>
+        <div class="box">
+          <h3>What you can expect</h3>
+          <ul class="list">
+            <li>Architecture you can operate: metrics, logs, alerts, and deployment pipelines.</li>
+            <li>Smart contracts built with audit readiness in mind (security patterns, clear constraints).</li>
+            <li>Backend services that scale: caching, queues, rate-limiting, and data modeling.</li>
+            <li>Pragmatic delivery: shipping safely without overengineering.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="focus" class="card section">
+      <h2>Focus Areas</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Web3 backend architecture</h3>
+          <p>
+            Indexing pipelines, event-driven services, APIs for wallets/dApps, and offchain/onchain boundaries.
+          </p>
+          <ul class="list">
+            <li>Event-driven & microservices</li>
+            <li>Onchain/offchain modeling</li>
+            <li>High-throughput APIs</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Smart contracts & security mindset</h3>
+          <p>
+            Solidity engineering focused on safety, maintainability, and gas-aware design.
+          </p>
+          <ul class="list">
+            <li>Security patterns & exploit-aware reviews</li>
+            <li>Gas optimization where it matters</li>
+            <li>Upgradeable design (when justified)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="projects" class="card section">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Aurora Engine (NEAR)</h3>
+          <p>EVM implementation on NEAR — protocol-level engineering and systems work.</p>
+        </div>
+        <div class="box">
+          <h3>DeFi lending platform</h3>
+          <p>Smart contract development with security and production readiness as first-class goals.</p>
+        </div>
+        <div class="box">
+          <h3>ChainTrack supply system</h3>
+          <p>Blockchain-based supply chain tracking with automation and error reduction.</p>
+        </div>
+        <div class="box">
+          <h3>Distributed storage module</h3>
+          <p>Open-source Go module (300+ stars) — distributed systems and storage design.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="writing" class="card section">
+      <h2>Writing</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Gas Optimization in Solidity</h3>
+          <p>Architecture-first view of gas efficiency: less “tips & tricks”, more production lessons.</p>
+        </div>
+        <div class="box">
+          <h3>Protocol Thinking</h3>
+          <p>Notes on consensus, incentives, and why systems evolve toward unexpected centralization.</p>
+        </div>
+      </div>
+      <div class="small">Tip: add your Medium link below in “Contact”.</div>
+    </div>
+
+    <div id="contact" class="card section">
+      <h2>Contact</h2>
+      <div class="grid">
+        <div class="box">
+          <h3>Let’s build something solid</h3>
+          <p>
+            If you’re working on a Web3 product that needs real backend engineering or safe smart contracts,
+            feel free to reach out.
+          </p>
+          <div class="ctaRow" style="margin-top:12px">
+            <!-- Replace email if needed -->
+            <a class="btn btnPrimary" href="mailto:arash.dolati.m@live.com">✉️ arash.dolati.m@live.com</a>
+            <a class="btn" href="https://t.me/zione_dev" target="_blank" rel="noreferrer">💬 Telegram</a>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Links</h3>
+          <ul class="list">
+            <li>GitHub: <a href="https://github.com/arashdm2020" target="_blank" rel="noreferrer">github.com/arashdm2020</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/arashdolatimehr/" target="_blank" rel="noreferrer">linkedin.com/in/arashdolatimehr</a></li>
+            <li>Stack Overflow: <a href="https://stackoverflow.com/users/0/arashdm" target="_blank" rel="noreferrer">stackoverflow.com/arashdm</a></li>
+            <li>Medium: <a href="#" onclick="return false;" title="Replace this with your Medium URL">add your Medium link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card footer">
+      <div>© <span id="y"></span> Arash Dolati Mehr • Built with GitHub Pages</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
