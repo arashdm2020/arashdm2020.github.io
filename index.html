@@ -3,204 +3,531 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Arash Dolati Mehr — Senior Backend & Web3 Engineer. Go, Solidity, distributed systems, production-grade smart contracts." />
-  <title>Arash Dolati Mehr — Senior Backend & Web3 Engineer</title>
+  <meta name="description" content="Arash Dolati Mehr — Lead Backend & Infrastructure Architect. Go, Distributed Systems, Cloud, Blockchain." />
+  <title>Arash Dolati Mehr — Lead Backend & Infrastructure Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0b0f14;
-      --panel:#0f1620;
-      --panel2:#0c121a;
-      --text:#e8eef7;
-      --muted:#a9b4c2;
-      --line:rgba(255,255,255,.08);
-      --accent:#7c5cff;
-      --accent2:#2ee59d;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius:18px;
+    :root {
+      /* Core Colors - Black spectrum */
+      --void: #000000;
+      --depth: #050505;
+      --base: #0A0A0A;
+      --surface: #111111;
+      --elevated: #181818;
+      --raised: #1F1F1F;
+      
+      /* Gold spectrum */
+      --gold: #C9A227;
+      --gold-bright: #E5B82A;
+      --gold-dim: #9A7B1E;
+      --gold-muted: rgba(201, 162, 39, 0.15);
+      
+      /* White spectrum */
+      --white: #FFFFFF;
+      --white-primary: #FAFAFA;
+      --white-secondary: #A0A0A0;
+      --white-tertiary: #606060;
+      --white-muted: #404040;
+      --white-ghost: #252525;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(900px 600px at 80% 10%, rgba(46,229,157,.12), transparent 55%),
-        radial-gradient(900px 600px at 60% 110%, rgba(124,92,255,.10), transparent 55%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.6;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.9}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 64px}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:14px 16px;
-      border:1px solid var(--line);
-      background:rgba(15,22,32,.6);
-      backdrop-filter: blur(10px);
-      border-radius: 999px;
-      position: sticky; top: 14px; z-index: 10;
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--void);
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; letter-spacing:.2px;
-      white-space:nowrap;
+
+    body {
+      background: var(--base);
+      color: var(--white-primary);
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
     }
-    .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
+
+    ::selection {
+      background: var(--gold);
+      color: var(--void);
     }
-    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
-    .navlinks a{
-      font-size:14px; color:var(--muted);
-      padding:8px 10px; border-radius:999px;
-      border:1px solid transparent;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 150ms ease;
     }
-    .navlinks a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.03)}
-    .hero{
-      display:grid; grid-template-columns: 1.25fr .75fr;
-      gap:18px; margin-top:18px;
+
+    a:hover {
+      color: var(--gold);
     }
-    @media (max-width: 880px){
-      .hero{grid-template-columns:1fr}
-      .nav{border-radius: 20px}
+
+    /* Layout */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
     }
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(15,22,32,.75), rgba(12,18,26,.75));
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+
+    /* Header / Navbar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      padding: 0 24px;
+      background: var(--base);
+      border-bottom: 1px solid var(--white-ghost);
     }
-    .heroMain{padding:26px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 11px; border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:13px;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .kicker b{color:var(--text)}
-    h1{
-      margin:14px 0 10px;
-      font-size:42px;
-      line-height:1.1;
-      letter-spacing:-.8px;
+
+    .brand-letter {
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 500;
     }
-    @media (max-width: 520px){
-      h1{font-size:34px}
+
+    .brand-name {
+      color: var(--white-primary);
+      font-size: 14px;
+      font-weight: 500;
     }
-    .subtitle{
-      color:var(--muted);
-      font-size:16px;
-      max-width: 68ch;
+
+    .indicator-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(201, 162, 39, 0.12);
+      color: var(--gold);
+      border-radius: 2px;
     }
-    .ctaRow{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:16px;
+
+    .indicator-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-dot 1.5s ease-in-out infinite;
     }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .btnPrimary{
-      border-color: rgba(124,92,255,.35);
-      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(46,229,157,.10));
+
+    .navlinks a {
+      padding: 8px 16px;
+      font-size: 13px;
+      color: var(--white-tertiary);
+      transition: color 150ms ease;
     }
-    .btn:hover{transform: translateY(-1px)}
-    .small{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:10px;
+
+    .navlinks a:hover {
+      color: var(--white-primary);
     }
-    .heroSide{padding:18px}
-    .stats{
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:10px;
+
+    .navlinks a.active {
+      color: var(--gold);
     }
-    .stat{
-      padding:12px 12px;
-      border:1px solid var(--line);
-      border-radius: 14px;
-      background:rgba(255,255,255,.03);
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 150ms ease;
     }
-    .stat .n{font-weight:800; font-size:18px}
-    .stat .l{color:var(--muted); font-size:12px; margin-top:3px}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .chip{
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--void);
     }
-    .section{
-      margin-top:18px;
-      padding:22px;
+
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      color: var(--void);
     }
-    .section h2{
-      margin:0 0 12px;
-      font-size:18px;
-      letter-spacing:.2px;
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white-primary);
+      border: 1px solid var(--white-muted);
+      padding: 11px 23px;
     }
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
+
+    .btn-outline:hover {
+      border-color: var(--white-secondary);
+      background: var(--white-ghost);
+      color: var(--white-primary);
     }
-    @media (max-width: 880px){
-      .grid{grid-template-columns:1fr}
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1px;
+      background: var(--white-ghost);
+      margin-bottom: 1px;
     }
-    .box{
-      padding:16px;
-      border:1px solid var(--line);
-      border-radius: 16px;
-      background:rgba(255,255,255,.03);
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        padding: 0 16px;
+      }
+      .navlinks {
+        display: none;
+      }
     }
-    .box h3{margin:0 0 8px; font-size:15px}
-    .box p{margin:0; color:var(--muted); font-size:14px}
-    .list{margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); font-size:14px}
-    .list li{margin:6px 0}
-    .footer{
-      margin-top:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:16px 18px;
-      color:var(--muted);
-      font-size:13px;
+
+    .hero-main {
+      background: var(--base);
+      padding: 32px;
     }
-    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .links a{
-      padding:7px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-      color:var(--muted);
+
+    .hero-side {
+      background: var(--surface);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .links a:hover{color:var(--text)}
-    code.inline{
-      background: rgba(124,92,255,.18);
-      border: 1px solid rgba(124,92,255,.25);
-      padding: 1px 7px;
-      border-radius: 999px;
-      color: var(--text);
+
+    /* Labels */
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .label-gold {
+      color: var(--gold-dim);
+    }
+
+    /* Value Display */
+    .value-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--white-primary);
+    }
+
+    .value-xl {
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .value-lg {
+      font-size: 36px;
+      line-height: 1.1;
+    }
+
+    .value-md {
+      font-size: 24px;
+    }
+
+    .value-gold {
+      color: var(--gold);
+    }
+
+    .value-unit {
+      color: var(--white-tertiary);
+      font-size: 18px;
+      margin-left: 8px;
+    }
+
+    /* Progress Bar */
+    .progress {
+      position: relative;
+      height: 4px;
+      background: var(--white-ghost);
+      overflow: hidden;
+      margin: 16px 0;
+    }
+
+    .progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--gold);
+      transition: width 500ms ease-out;
+    }
+
+    /* Stats Grid */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--white-ghost);
+    }
+
+    .stat-item .label {
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      color: var(--white-primary);
+    }
+
+    /* Avatar */
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-dim);
+      box-shadow: 0 0 24px rgba(201, 162, 39, 0.15);
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    /* Panel */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--white-ghost);
+    }
+
+    .panel-gold {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 24px rgba(201, 162, 39, 0.08);
+    }
+
+    /* Sections */
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--white-ghost);
+      margin-bottom: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--white-ghost);
+      margin-bottom: 1px;
+    }
+
+    .section-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--white-ghost);
+      margin-bottom: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .section-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .section-item {
+      background: var(--surface);
+      padding: 24px;
+    }
+
+    .section-item h3 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white-primary);
+      margin-bottom: 8px;
+    }
+
+    .section-item p {
+      font-size: 14px;
+      color: var(--white-secondary);
+      line-height: 1.6;
+    }
+
+    .section-item .list {
+      margin: 8px 0 0;
+      padding: 0 0 0 18px;
+      color: var(--white-secondary);
+      font-size: 13px;
+    }
+
+    .section-item .list li {
+      margin: 6px 0;
+    }
+
+    /* Section Headers */
+    .section-header {
+      background: var(--base);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--white-ghost);
+    }
+
+    .section-header h2 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white-tertiary);
+      margin: 0;
+    }
+
+    /* Quick Links */
+    .quick-link {
+      background: var(--surface);
+      padding: 20px;
+      transition: background 150ms ease;
+    }
+
+    .quick-link:hover {
+      background: var(--elevated);
+    }
+
+    .quick-link .label {
+      margin-bottom: 4px;
+    }
+
+    .quick-link-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white-primary);
+      transition: color 150ms ease;
+    }
+
+    .quick-link:hover .quick-link-title {
+      color: var(--gold);
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 6px 12px;
       font-size: 12px;
+      color: var(--white-secondary);
+      background: var(--white-ghost);
+      border-radius: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--base);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--white-ghost);
+      font-size: 13px;
+      color: var(--white-tertiary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--white-secondary);
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* CTA Row */
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    /* Text utilities */
+    .text-gold {
+      color: var(--gold);
+    }
+
+    .text-secondary {
+      color: var(--white-secondary);
+    }
+
+    .text-tertiary {
+      color: var(--white-tertiary);
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Animations */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 300ms ease-out forwards;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--white-ghost);
+    }
+
+    .divider-gold {
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
     }
   </style>
 </head>
@@ -208,197 +535,239 @@
 <body>
   <div class="wrap">
 
-    <div class="nav">
+    <!-- NAVBAR -->
+    <header class="nav">
       <div class="brand">
-        <span class="dot"></span>
-        <span>Arash Dolati Mehr</span>
+        <span class="brand-letter">A</span>
+        <span class="brand-name">Arash Dolati Mehr</span>
       </div>
-      <div class="navlinks">
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
+      <div class="indicator-live">Available</div>
+      <nav class="navlinks">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-      </div>
-    </div>
+      </nav>
+    </header>
 
-    <div class="hero">
-      <div class="card heroMain">
-        <div class="kicker">⚙️ <b>Senior Backend & Web3 Engineer</b> • Go / Solidity • Distributed Systems</div>
-        <h1>Production-grade backends and smart contracts that survive mainnet.</h1>
-        <div class="subtitle">
-          I build scalable, secure backend systems and EVM smart contracts for NFT, DeFi, and protocol-level products —
-          with a focus on reliability, maintainability, and real-world operating constraints.
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="label label-gold">Lead Backend & Infrastructure Architect</div>
+        <h1 class="value-display value-xl" style="margin: 16px 0 24px;">15+<span class="value-unit">years</span></h1>
+        
+        <p class="text-secondary" style="font-size: 15px; max-width: 560px; margin-bottom: 24px;">
+          Designing and scaling high-traffic, security-critical systems. Specialized in distributed systems, 
+          cloud-native architectures, and blockchain-based financial platforms.
+        </p>
+
+        <div class="progress">
+          <div class="progress-fill" style="width: 85%;"></div>
         </div>
 
-        <div class="ctaRow">
-          <a class="btn btnPrimary" href="#contact">📩 Contact</a>
-          <a class="btn" href="https://github.com/arashdm2020" target="_blank" rel="noreferrer">🐙 GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/arashdolatimehr/" target="_blank" rel="noreferrer">💼 LinkedIn</a>
-        </div>
-
-        <div class="small">
-          Currently open to: <code class="inline">remote contracts</code> • <code class="inline">protocol/backend consulting</code> • <code class="inline">security-minded engineering</code>
-        </div>
-      </div>
-
-      <div class="card heroSide">
-        <div class="stats">
-          <div class="stat">
-            <div class="n">15+ yrs</div>
-            <div class="l">Backend / systems engineering</div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="label">Experience</div>
+            <div class="stat-value">15+ yrs</div>
           </div>
-          <div class="stat">
-            <div class="n">7+ yrs</div>
-            <div class="l">Blockchain & EVM work</div>
+          <div class="stat-item">
+            <div class="label">Cost Reduction</div>
+            <div class="stat-value text-gold">~22%</div>
           </div>
-          <div class="stat">
-            <div class="n">12k+</div>
-            <div class="l">Users on NFT game (prod)</div>
-          </div>
-          <div class="stat">
-            <div class="n">99.9%</div>
-            <div class="l">Uptime ops experience</div>
+          <div class="stat-item">
+            <div class="label">API Boost</div>
+            <div class="stat-value">~35%</div>
           </div>
         </div>
+      </div>
 
-        <div class="chips" aria-label="Key skills">
-          <span class="chip">Go (Gin, GORM)</span>
-          <span class="chip">Solidity (EVM)</span>
-          <span class="chip">Rust</span>
-          <span class="chip">Python (FastAPI)</span>
-          <span class="chip">PHP (Laravel)</span>
-          <span class="chip">PostgreSQL / Redis</span>
-          <span class="chip">Docker / Kubernetes</span>
-          <span class="chip">CI/CD</span>
-          <span class="chip">Security-first</span>
+      <div class="hero-side">
+        <img src="photo_5933946028002315160_y.jpg" alt="Arash Dolati Mehr" class="avatar" />
+        <div class="label" style="margin-top: 8px;">Status</div>
+        <div class="value-display value-md value-gold">Open to Work</div>
+        
+        <div class="chips">
+          <span class="chip">Go</span>
+          <span class="chip">gRPC</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Ethereum</span>
+        </div>
+
+        <div class="cta-row" style="margin-top: 24px; width: 100%;">
+          <a class="btn btn-gold" href="#contact" style="flex: 1;">Contact</a>
+          <a class="btn btn-outline" href="https://github.com/arashdm2020" target="_blank">GitHub</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="about" class="card section">
-      <h2>About</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>How I work</h3>
-          <p>
-            I prefer boring, testable designs: clear invariants, minimal state, explicit failure modes,
-            and observability from day one. Most “scalable” systems fail due to unclear ownership of state,
-            weak operational discipline, or unsafe upgrade paths — I design around that.
-          </p>
-        </div>
-        <div class="box">
-          <h3>What you can expect</h3>
-          <ul class="list">
-            <li>Architecture you can operate: metrics, logs, alerts, and deployment pipelines.</li>
-            <li>Smart contracts built with audit readiness in mind (security patterns, clear constraints).</li>
-            <li>Backend services that scale: caching, queues, rate-limiting, and data modeling.</li>
-            <li>Pragmatic delivery: shipping safely without overengineering.</li>
-          </ul>
-        </div>
+    <!-- STATS ROW -->
+    <section class="section-grid">
+      <div class="section-item">
+        <div class="label">Education</div>
+        <div class="value-display value-md">M.Sc.</div>
+        <p class="text-tertiary" style="margin-top: 4px;">Computer Engineering (ITU)</p>
       </div>
-    </div>
-
-    <div id="focus" class="card section">
-      <h2>Focus Areas</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Web3 backend architecture</h3>
-          <p>
-            Indexing pipelines, event-driven services, APIs for wallets/dApps, and offchain/onchain boundaries.
-          </p>
-          <ul class="list">
-            <li>Event-driven & microservices</li>
-            <li>Onchain/offchain modeling</li>
-            <li>High-throughput APIs</li>
-          </ul>
-        </div>
-        <div class="box">
-          <h3>Smart contracts & security mindset</h3>
-          <p>
-            Solidity engineering focused on safety, maintainability, and gas-aware design.
-          </p>
-          <ul class="list">
-            <li>Security patterns & exploit-aware reviews</li>
-            <li>Gas optimization where it matters</li>
-            <li>Upgradeable design (when justified)</li>
-          </ul>
-        </div>
+      <div class="section-item">
+        <div class="label">Focus</div>
+        <div class="value-display value-md text-gold">Backend</div>
+        <p class="text-tertiary" style="margin-top: 4px;">Distributed Systems</p>
       </div>
-    </div>
+      <div class="section-item">
+        <div class="label">Preference</div>
+        <div class="value-display value-md">Remote</div>
+        <p class="text-tertiary" style="margin-top: 4px;">High-ownership roles</p>
+      </div>
+    </section>
 
-    <div id="projects" class="card section">
+    <!-- EXPERIENCE -->
+    <div class="section-header" id="experience">
+      <h2>Work Experience</h2>
+    </div>
+    <section class="section-grid-2">
+      <div class="section-item">
+        <h3>Lead Backend & Infrastructure Architect</h3>
+        <p><strong class="text-gold">Trendyol Group</strong> — Istanbul • Jun 2022 – Jul 2023</p>
+        <ul class="list">
+          <li>Architected backend systems processing millions of daily transactions</li>
+          <li>Designed high-throughput distributed systems using Go, gRPC, Kafka</li>
+          <li>Built resilient asynchronous pipelines for fault tolerance</li>
+          <li>Drove ~22% cloud cost reduction across AWS and DigitalOcean</li>
+        </ul>
+      </div>
+      <div class="section-item">
+        <h3>Blockchain Integration Lead</h3>
+        <p><strong class="text-gold">Akbank Innovation Lab</strong> — Istanbul • Nov 2018 – Sep 2021</p>
+        <ul class="list">
+          <li>Led enterprise blockchain adoption at Turkey's largest bank</li>
+          <li>Architected blockchain-based settlement layer for banking ops</li>
+          <li>Built internal blockchain simulator and testing framework</li>
+          <li>Contributed to DID-based KYC, reducing onboarding by ~25%</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section-grid-2">
+      <div class="section-item">
+        <h3>Senior Backend Engineer</h3>
+        <p><strong class="text-gold">Logo Yazılım</strong> — Istanbul • Sep 2015 – Jul 2018</p>
+        <ul class="list">
+          <li>Designed scalable backend services for ERP platforms</li>
+          <li>Built RESTful APIs using Go and PHP</li>
+          <li>Optimized database queries, improving API response by ~35%</li>
+          <li>Introduced Docker and GitLab CI/CD pipelines</li>
+        </ul>
+      </div>
+      <div class="section-item">
+        <h3>Leadership & Security</h3>
+        <p class="text-secondary">Core Competencies</p>
+        <ul class="list">
+          <li>Led cross-functional engineering teams</li>
+          <li>Owned systems end-to-end from design to production</li>
+          <li>Audited third-party codebases for security risks</li>
+          <li>Performed threat modeling for blockchain platforms</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <div class="section-header" id="skills">
+      <h2>Skills</h2>
+    </div>
+    <section class="section-grid-4">
+      <div class="section-item">
+        <h3>Backend</h3>
+        <p>Go, gRPC, REST APIs, Kafka, Redis Streams, Microservices</p>
+      </div>
+      <div class="section-item">
+        <h3>Infrastructure</h3>
+        <p>AWS, DigitalOcean, Docker, CI/CD, Kubernetes</p>
+      </div>
+      <div class="section-item">
+        <h3>Data</h3>
+        <p>PostgreSQL, MySQL, Redis, Query Optimization</p>
+      </div>
+      <div class="section-item">
+        <h3>Blockchain</h3>
+        <p>Ethereum, Smart Contracts, Web3, DID</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <div class="section-header" id="projects">
       <h2>Selected Projects</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Aurora Engine (NEAR)</h3>
-          <p>EVM implementation on NEAR — protocol-level engineering and systems work.</p>
-        </div>
-        <div class="box">
-          <h3>DeFi lending platform</h3>
-          <p>Smart contract development with security and production readiness as first-class goals.</p>
-        </div>
-        <div class="box">
-          <h3>ChainTrack supply system</h3>
-          <p>Blockchain-based supply chain tracking with automation and error reduction.</p>
-        </div>
-        <div class="box">
-          <h3>Distributed storage module</h3>
-          <p>Open-source Go module (300+ stars) — distributed systems and storage design.</p>
-        </div>
-      </div>
     </div>
+    <section class="section-grid-4">
+      <a href="#" class="quick-link">
+        <div class="label">Backend</div>
+        <div class="quick-link-title">Event-Driven System →</div>
+      </a>
+      <a href="#" class="quick-link">
+        <div class="label">Blockchain</div>
+        <div class="quick-link-title">Settlement Layer →</div>
+      </a>
+      <a href="#" class="quick-link">
+        <div class="label">Observability</div>
+        <div class="quick-link-title">Monitoring Stack →</div>
+      </a>
+      <a href="#" class="quick-link">
+        <div class="label">Security</div>
+        <div class="quick-link-title">Code Auditing →</div>
+      </a>
+    </section>
 
-    <div id="writing" class="card section">
-      <h2>Writing</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Gas Optimization in Solidity</h3>
-          <p>Architecture-first view of gas efficiency: less “tips & tricks”, more production lessons.</p>
-        </div>
-        <div class="box">
-          <h3>Protocol Thinking</h3>
-          <p>Notes on consensus, incentives, and why systems evolve toward unexpected centralization.</p>
-        </div>
-      </div>
-      <div class="small">Tip: add your Medium link below in “Contact”.</div>
+    <!-- EDUCATION -->
+    <div class="section-header" id="education">
+      <h2>Education</h2>
     </div>
+    <section class="section-grid">
+      <div class="section-item panel-gold">
+        <h3>Master's Degree — Computer Engineering</h3>
+        <p>Istanbul Technical University (ITU)</p>
+      </div>
+      <div class="section-item">
+        <h3>Continuous Learning</h3>
+        <p>Technical articles on backend architecture, security, and supply chain attacks</p>
+      </div>
+      <div class="section-item">
+        <h3>Community</h3>
+        <p>Active knowledge sharing with the engineering community</p>
+      </div>
+    </section>
 
-    <div id="contact" class="card section">
+    <!-- CONTACT -->
+    <div class="section-header" id="contact">
       <h2>Contact</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Let’s build something solid</h3>
-          <p>
-            If you’re working on a Web3 product that needs real backend engineering or safe smart contracts,
-            feel free to reach out.
-          </p>
-          <div class="ctaRow" style="margin-top:12px">
-            <!-- Replace email if needed -->
-            <a class="btn btnPrimary" href="mailto:arash.dolati.m@live.com">✉️ arash.dolati.m@live.com</a>
-            <a class="btn" href="https://t.me/zione_dev" target="_blank" rel="noreferrer">💬 Telegram</a>
-          </div>
-        </div>
-        <div class="box">
-          <h3>Links</h3>
-          <ul class="list">
-            <li>GitHub: <a href="https://github.com/arashdm2020" target="_blank" rel="noreferrer">github.com/arashdm2020</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/arashdolatimehr/" target="_blank" rel="noreferrer">linkedin.com/in/arashdolatimehr</a></li>
-            <li>Stack Overflow: <a href="https://stackoverflow.com/users/0/arashdm" target="_blank" rel="noreferrer">stackoverflow.com/arashdm</a></li>
-            <li>Medium: <a href="#" onclick="return false;" title="Replace this with your Medium URL">add your Medium link</a></li>
-          </ul>
+    </div>
+    <section class="section-grid-2">
+      <div class="section-item">
+        <h3>Let's build something solid</h3>
+        <p>If you need real backend engineering or secure distributed systems, feel free to reach out.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="mailto:arash.dolati.m@live.com">✉️ Email</a>
+          <a class="btn btn-outline" href="https://t.me/zione_dev" target="_blank">💬 Telegram</a>
         </div>
       </div>
-    </div>
+      <div class="section-item">
+        <h3>Links</h3>
+        <ul class="list">
+          <li><a href="https://github.com/arashdm2020" target="_blank">GitHub → github.com/arashdm2020</a></li>
+          <li><a href="https://www.linkedin.com/in/arashdolatimehr/" target="_blank">LinkedIn → linkedin.com/in/arashdolatimehr</a></li>
+          <li><a href="https://stackoverflow.com/users/0/arashdm" target="_blank">Stack Overflow → stackoverflow.com/arashdm</a></li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="card footer">
-      <div>© <span id="y"></span> Arash Dolati Mehr • Built with GitHub Pages</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="y"></span> Arash Dolati Mehr</div>
+      <div class="footer-links">
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </div>
-    </div>
+    </footer>
 
   </div>
 
